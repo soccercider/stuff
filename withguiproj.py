@@ -5,12 +5,19 @@ from PIL import Image, ImageTk, ImageDraw, ImageFont
 #to view image, this file needs to be in the same folder
 #as the images used
 
+#if there is a dash in the alcohol
+#we parse it so that we get
+#the position of the OH group
 def n_alcohol(chemical_name):
     for i in range(len(chemical_name)):
         if chemical_name[i]=="-":
             chemical_name=chemical_name[i+1:]
             return i
     return -1
+
+#the main root of the alcohol
+#is extracted so it can be found 
+#in the dictionary
 def n_alcohol_changename(chemical_name):
     for i in range(len(chemical_name)):
         if chemical_name[i]=="-":
@@ -87,7 +94,6 @@ def draw_chem_structure():
         attach_OH=int(chemical_name[:1])
         remainder=n_alcohol_changename(chemical_name)
         if remainder in alcohol_prefix and original_entry[len(original_entry)-4:]=='anol' and original_entry!="methanol":
-        #print alkane_prefix[chemical_name]
             exception1=True
             for i in range(alcohol_prefix[remainder]):
                 if i % 2 == 0:
@@ -145,6 +151,9 @@ def draw_chem_structure():
         im.paste(Oxygen,(x+7,y-10))
         if chemical_name[0:5]=='alpha':
             draw.line([(x+70, y+70),(x+80,y+80)], fill=(0,0,0), width=2)#end at C2
+            #in the process of completion
+            
+    #####WATER
     if original_entry=="water":
         im.paste(Oxygen,(x-10,y-20))
         draw.line([(x+9, y),(x+30,y+10)], fill=(0,0,0), width=2)
