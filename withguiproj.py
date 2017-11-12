@@ -2,6 +2,9 @@ from Tkinter import *
 import random
 from PIL import Image, ImageTk, ImageDraw, ImageFont
 
+#to view image, this file needs to be in the same folder
+#as the images used
+
 def n_alcohol(chemical_name):
     for i in range(len(chemical_name)):
         if chemical_name[i]=="-":
